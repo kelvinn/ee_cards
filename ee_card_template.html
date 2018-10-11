@@ -1,0 +1,55 @@
+<html>
+
+
+<head>
+    <style type="text/css">
+
+        #components td {
+            color: grey;
+            border: 8px;
+            border-color: grey;
+            padding: 10px 10px 10px 10px;
+            text-align: center;
+            font-size: {{width}}px;
+            font-weight: bold;
+            width: {{ width }}mm;
+            height: {{ height }}mm;
+        }
+
+        .small{
+            color: black;
+            text-align: right;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <table cellspacing="0" border="0.1" id="components">
+
+        {% for row in df |batch(2, '-') %}
+
+            <tr>
+                {% for value in row %}
+                    <td valign="bottom">
+                        <div class="small">{{ value }}</div>
+                        <div>{{ value }}</div>
+
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <!-- Page break (the syntax is for xhtml2pdf) -->
+    <pdf:nextpage />
+
+
+
+
+</body>
+</html>
